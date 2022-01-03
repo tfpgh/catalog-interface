@@ -1,30 +1,41 @@
 <script>
-	export let name;
+	import Item from "./Item.svelte";
+	import AddItem from "./AddItem.svelte";
+	import { onMount } from "svelte";
+
+	let items = [];
+	onMount(async () => {
+		const res = await fetch(
+			`https://tech-catalog-backend.herokuapp.com/get_items`
+		);
+		items = await res.json();
+	});
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<AddItem />
+	{#each items as item}
+		<Item
+			key={item.key}
+			name={item.name}
+			desc={item.description}
+			quantity={item.quantity}
+			image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
+				item.key +
+				".png"}
+		/>
+	{/each}
 </main>
 
 <style>
+	:global(body) {
+		background-color: #eeeeee;
+	}
+
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+		display: flex;
+		flex-wrap: wrap;
+		flex-shrink: 1;
+		justify-content: center;
 	}
 </style>
