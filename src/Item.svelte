@@ -3,6 +3,7 @@
     export let name = "Default Name";
     export let desc = "Default Description";
     export let quantity = "42";
+    export let categories = "";
     export let image_url = "https://via.placeholder.com/720";
 
     function updateItem() {
@@ -11,6 +12,7 @@
             name: name,
             description: desc,
             quantity: quantity,
+            categories: categories,
         };
 
         fetch("https://tech-catalog-backend.herokuapp.com/update_item", {
@@ -38,9 +40,8 @@
 <div on:input={updateItem}>
     <h1 contenteditable="true" bind:textContent={name}>{name}</h1>
     <p contenteditable="true" bind:textContent={desc}>{desc}</p>
-    <p contenteditable="true" bind:textContent={quantity}>
-        Quantity: {quantity}
-    </p>
+    <p contenteditable="true" bind:textContent={quantity}>{quantity}</p>
+    <p contenteditable="true" bind:textContent={categories}>{categories}</p>
     <img src={image_url} alt={desc} />
     <button on:click={deleteItem}>Delete!</button>
 </div>

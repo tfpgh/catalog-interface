@@ -2,6 +2,7 @@
     export let name = "New Item Name";
     export let desc = "New Item Description";
     export let quantity = "42";
+    export let categories = "all, ";
 
     function createItem() {
         let data = new FormData();
@@ -16,6 +17,7 @@
         data.append("name", name);
         data.append("description", desc);
         data.append("quantity", quantity);
+        data.append("categories", categories);
         data.append("image", image.files[0]);
 
         fetch("https://tech-catalog-backend.herokuapp.com/add_item", {
@@ -30,9 +32,8 @@
 <div>
     <h1 contenteditable="true" bind:textContent={name}>{name}</h1>
     <p contenteditable="true" bind:textContent={desc}>{desc}</p>
-    <p contenteditable="true" bind:textContent={quantity}>
-        Quantity: {quantity}
-    </p>
+    <p contenteditable="true" bind:textContent={quantity}>{quantity}</p>
+    <p contenteditable="true" bind:textContent={categories}>{categories}</p>
     <input type="file" id="image" accept="image/*" />
     <button on:click={createItem}>Create!</button>
 </div>

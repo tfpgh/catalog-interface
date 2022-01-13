@@ -20,6 +20,7 @@
 			name={item.name}
 			desc={item.description}
 			quantity={item.quantity}
+			categories={item.categories}
 			image_url={"https://tech-catalog-images.s3.us-west-1.amazonaws.com/" +
 				item.key +
 				".png"}
