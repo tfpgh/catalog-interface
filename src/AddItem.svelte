@@ -2,7 +2,7 @@
     export let name = "New Item Name";
     export let desc = "New Item Description";
     export let quantity = "42";
-    export let categories = "all, ";
+    export let categories = "all";
 
     function createItem() {
         let data = new FormData();
@@ -25,7 +25,8 @@
             body: data,
         })
             .then((data) => data.json())
-            .then((json) => console.log(json));
+            .then((json) => console.log(json))
+            .then(() => document.location.reload());
     }
 </script>
 
