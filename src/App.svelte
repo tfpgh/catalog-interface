@@ -1,13 +1,11 @@
 <script>
-  import Item from "./Item.svelte";
-  import AddItem from "./AddItem.svelte";
   import { onMount } from "svelte";
+  import AddItem from "./AddItem.svelte";
+  import Item from "./Item.svelte";
 
   let items = [];
   onMount(async () => {
-    const res = await fetch(
-      `https://tech-catalog-backend.herokuapp.com/get_items`
-    );
+    const res = await fetch(`https://tech-catalog-backend.fly.dev/get_items`);
     items = await res.json();
   });
 </script>

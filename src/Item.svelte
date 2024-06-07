@@ -18,7 +18,7 @@
       rotation: rotation,
     };
 
-    fetch("https://tech-catalog-backend.herokuapp.com/update_item", {
+    fetch("https://tech-catalog-backend.fly.dev/update_item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@
   }
 
   function deleteItem() {
-    fetch("https://tech-catalog-backend.herokuapp.com/delete_item?key=" + key, {
+    fetch("https://tech-catalog-backend.fly.dev/delete_item?key=" + key, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

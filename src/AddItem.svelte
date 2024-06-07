@@ -20,7 +20,7 @@
     data.append("categories", categories);
     data.append("image", image.files[0]);
 
-    fetch("https://tech-catalog-backend.herokuapp.com/add_item", {
+    fetch("https://tech-catalog-backend.fly.dev/add_item", {
       method: "POST",
       body: data,
     })
